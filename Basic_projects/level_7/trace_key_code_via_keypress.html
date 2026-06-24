@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .project{
+            width: 80%;
+            height: 80%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .key{
+            color: aliceblue;
+            font-size: 2rem;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="project">
+        <div id="insert">
+            <div class="key">Press the key and watch the magic</div>
+        </div>
+    </div>
+
+    <script>
+
+        const insert=document.getElementById('insert');
+
+        window.addEventListener('keydown',(e)=>{
+            insert.innerHTML=`
+            <div>
+            <table style="border:2px solid white; font-size:30px;">
+                <tr>
+                <th>Key</th>
+                <th>Keycode</th>
+                <th>Code</th>
+                </tr>
+                <tr>
+                <td>${e.key === " "?'space':e.key}</td>
+                <td>${e.keyCode}</td>
+                <td>${e.code}</td>
+                </tr>
+                <table>
+            </div>`;
+            insert.style.color="white";
+        })
+    </script>
+</body>
+</html>

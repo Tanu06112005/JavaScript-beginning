@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="owl"  onclick="alert('owl clicked')" ></li>    
+            
+            <!--onclick="alert('owl, using onclick in the innerHTML')" -->
+            
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+
+const owl=document.getElementById("owl").onclick=function()
+{
+    alert("using onclick in the script tag");
+}
+
+// onclick method is not effecient 
+// isliye we use addEventListener which takes three parameters 
+//           1. what event is captured
+//           2. what function to perform
+//           3. true (event capturing) / false (event bubbling)   
+
+// by default is event bubbling hota hai yani ki false hota hai
+
+// event bubbling:-
+
+// document.getElementById('images').addEventListener('click', function(e){
+//     alert("image clicked");
+//     console.log(e);
+// }, false);
+// document.getElementById('owl').addEventListener('click', function(e){
+//     console.log(e)
+// }, false)
+
+// document.getElementById('images').addEventListener('click', function(e){
+//     alert("image clicked");
+//     console.log(e);
+// }, false);
+// document.getElementById('owl').addEventListener('click', function(e){
+//     console.log(e)
+// }, true)
+
+
+// event capturing:-
+
+// document.getElementById('images').addEventListener('click', function(e){
+//     alert("image clicked");
+//     console.log(e);
+// }, true);
+// document.getElementById('owl').addEventListener('click', function(e){
+//     console.log(e)
+// }, false)
+// document.getElementById('images').addEventListener('click', function(e){
+//     alert("image clicked");
+//     console.log(e);
+// }, true);
+// document.getElementById('owl').addEventListener('click', function(e){
+//     console.log(e)
+// }, true)
+
+
+// stop propogation:- if we want to stop the event propogation we can use stopPropogation method
+
+// document.getElementById('owl').addEventListener('click', function(e){
+//     console.log("owl clicked");
+//     e.stopPropagation();
+// }, false);
+
+// document.getElementById('images').addEventListener('click', function(e){
+//     alert("image clicked");
+//     console.log(e);
+// }, true);
+// document.getElementById('owl').addEventListener('click', function(e){
+//     console.log("owl clicked");
+//     e.stopPropagation();
+// }, true);
+
+// prevent default:- if we want to prevent the default action of an element we can use preventDefault method
+
+ document.getElementById('google').addEventListener('click', function(e){
+    e.preventDefault();  
+}, false);
+
+// after mentioning this it will nit direct to the google page and stay at the same page as it was
+// in short the next action of the function of the element (here directiong to the google site is restricted) is prevented by using preventDefault method
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// removing the event listener:- if we want to remove the event listener we can use removeEventListener method which takes the same parameters as addEventListener method
+
+document.querySelector('#images').addEventListener('click', function(e){
+    console.log(e);// it shows that e is a Pointer event 
+    console.log(e.target); // it shows the target element which is clicked
+    console.log(e.currentTarget); // it shows the current target element which is clicked
+    console.log(e.target.currentTarget); // it shows the current target element which is clicked
+    console.log(e.target.parentElement); // it shows the parent element of the target element which is clicked  
+    console.log(e.target.className); // it shows the class name of the target element which is clicked
+    console.log(e.target.id); // it shows the id of the target element which is clicked
+    console.log(e.target.innerHTML); // it shows the innerHTML of the target element which is clicked
+    console.log(e.target.innerText); // it shows the innerText of the target element which  is clicked      
+    console.log(e.target.parentNode); // it shows the parent node of the target element which is clicked
+});
+
+
+</script>
+</html>

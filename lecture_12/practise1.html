@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai Aur Code </h1>
+        <button id="start">START</button>
+
+    <button id="stop">STOP</button>
+    
+</body>
+<script>
+    // setTimeout(): after a certain period of time, executes only once 
+    //      takes two parameter 
+    //              i. function 
+    //              ii. time 
+
+
+    // setInterval(): after a fixed interval of time, it executes the certain peice of code multiple times
+
+    // setTimeout(function(){
+    //     console.log("tanushika Pandit")
+    // },2000)
+
+    // why call back, because only reference is provided to the setTimeout function 
+
+    // const greet=function(){
+    //     console.log("Hello my friends")
+    // }
+    // setTimeout(function(){
+    //     console.log("Hello my friends")
+    //     },2000)
+
+    // document.getElementById('stop').addEventListener('click',function(){
+    //     setTimeout(function(){
+    //     console.log("Hello my friends")
+    //     },2000)
+    // });
+
+            // greet() --> (this not)  coz this is function execution 
+
+//----------------------------------------------------------------------------------------------------------------------
+    // setInterval
+    // setInterval(function(){
+    //     console.log("using setInterval",Date.now())
+    // },2000);
+
+
+    // document.getElementById('start').addEventListener('click',function(){
+    //         var set=setInterval(function(){
+    //             console.log("this is setInterval", Date.now())
+    //         },2000)
+
+    //         document.getElementById('stop').addEventListener('click',function(){
+    //             clearInterval(set)
+    //             console.log("the process is ended")
+    //         })
+
+    // })
+
+    // correct one
+
+    let v;
+    document.getElementById('start').addEventListener('click',function(){
+        if(!v){
+            v=setInterval(function(){
+                console.log("printing",Date.now())
+            },2000)
+        }
+    })
+
+    document.getElementById('stop').addEventListener('click',function(){
+        clearInterval(v);
+        console.log("process ended")
+        v=null;
+    })
+    
+
+
+
+setInterval 
+</script>
+</html>
+

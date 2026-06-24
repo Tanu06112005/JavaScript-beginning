@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning ot create an element into the document</title>
+    <style>
+        body{
+            background-color: rgb(32, 32, 32);
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    
+
+
+    <script>
+        // now we are trying to create a new div into the body 
+
+        const div=document.createElement('div');
+        console.log(div);
+        div.className="newdiv";
+        div.id=Math.ceil(Math.random()*10+1);
+        div.setAttribute("title","generated title");
+        div.style.backgroundColor="green";
+        div.style.padding="40px";
+
+        // adding text to our div: we have two mwthods
+        //1.)
+        div.innerText="This is the text of the div created using innerText";
+        
+        //2.) by creating the text node(tree structre ke according)
+        // here we try to create the new child the div and then append that child
+        const addtext=document.createTextNode("new text using createTextNode");
+        div.appendChild(addtext); 
+
+        // last process to add the div eleemnt to the body of the document
+        document.body.appendChild(div);
+
+
+    </script>
+</body>
+</html>
+/*
+const div=document.CreateElement('div');
+div.className="divclass";
+div.id="divid"
+div.style.backgroundColor="green";
+div.style.padding="40px";
+div.innerText="This is the text of the div created using innerText"; 
+        NOTE: (this above method is not optimal because it will override the previous text if we try to add another text using innerText)
+               Aur is approach  me two way method k use hota
+                    1. phle js us element tk reach out krega 
+                    2. then it will override the text of that element with the new text
+        
+        
+     //2.) by creating the text node(tree structre ke according) 
+
+const addtext=document.createTextNode("new text using createTextNode");
+div.appendChild(addtext);
+
+document.body.appendChild(div);
+
+*/

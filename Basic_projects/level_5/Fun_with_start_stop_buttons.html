@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+             height: 100vh;
+            width: 100vw;
+             background-color: #0e0e0e;
+            
+           
+        }
+        .main-box{
+            padding:1.5rem;
+            color:aliceblue;
+            text-align: center;
+            height: 30%;
+            width: 40%;
+            background-image: linear-gradient(to right,rgba(4, 13, 41, 0.9),rgba(12, 50, 177, 0.7));
+            border-radius: 1rem;
+           
+        }
+        button{
+            width:5rem;
+            height: 2rem;
+            cursor: pointer;
+        }
+        .main-box:last-child{
+            height: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-box">
+            <h1>Fun With Start & Stop Buttons</h1>
+            <button id="start">START</button>
+             <button id="stop">STOP</button>
+
+             <h5>Hit START button to start the event</h5>
+            <h5>Hit STOP button to stop the event</h5>
+
+        </div>
+        <div class="main-box">
+            <h1>Output Panel</h1>
+        </div>
+    </div>
+    
+
+    <script>
+        //  const printDate=function(){
+        //     console.log(Date.now());
+        // }
+
+        
+
+         const Action_start=function(){
+            const newchild=document.createElement('p');
+            newchild.style.fontSize="6px";
+            newchild.innerHTML=Date.now().toLocaleString();
+            document.querySelectorAll('.main-box')[1].appendChild(newchild);
+            
+        }
+
+        const Action_stop=function(){
+            const newchild=document.createElement('p');
+            newchild.style.fontSize="6px";
+            newchild.innerHTML=(" you clicked the stop button,Event stopped...!");
+            document.querySelectorAll('.main-box')[1].appendChild(newchild);
+            
+        }
+
+
+    //     let setInterval_ref=null;
+
+    //  document.getElementById('start').addEventListener('click',function(){
+    //     if(setInterval_ref !== null){
+    //         clearInterval(setInterval_ref);
+    //     }
+    //         setInterval_ref=setInterval(Action_start,1000); 
+    //  });
+
+
+    //  document.getElementById('stop').addEventListener('click',function(){
+    //     clearInterval(setInterval_ref);
+    //      Action_stop();
+    //  });
+
+
+
+    let set=null;
+    let i=0;
+    document.getElementById('start').addEventListener('click',function(){
+        if(set){
+            clearInterval(set)
+        }
+        set=setInterval(Action_start,2000)
+        
+    })
+
+    document.getElementById('stop').addEventListener('click',function(){
+      
+         clearInterval(set)
+            Action_stop()
+       
+        set=null;
+    })
+
+
+
+
+
+
+    </script>
+</body>
+</html>

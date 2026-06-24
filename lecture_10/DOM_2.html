@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 2</title>
+    <style>
+        body{
+            background-color: rgb(32, 32, 32);
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="parentdiv">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+
+
+    <script>
+        const parentcont=document.querySelector(".parentdiv");
+        console.log(parentcont);  // prints the whole div
+        console.log(parentcont.children);  // gives the HTMLColletion of length 4(batata iske andar kitne elements hai) and it is an array like element but it is not an array and we can access the elements using index and also we can get the length of the collection using length property.
+        // it is basically working as: getElementByClassName(array like element) which produces a html collection 
+        // here also all the children have the same class name, therefore it is giving the html collection of all the divs inside the parent div
+
+        console.log(parentcont.children[0]);   // since it an array like element we can access the elements using index and it will give us the first div with class name day  and can apply traditional for loops on them as well
+        console.log("the output is here: ",parentcont.children[0].innerHTML);
+        // used to fetch  the single child an dperform operations on them
+
+        for(let i=0;i<parentcont.children.length;i++){
+            console.log(parentcont.children[i].innerHTML);
+        }
+
+// accessing child from the parent 
+        console.log(parentcont.firstElementChild);
+        console.log(parentcont.lastElementChild);
+
+// accessing parent from the child
+const dayone=document.querySelector('.day'); //"it holds the valueof the fist element with className "
+console.log(dayone.parentElement);
+console.log(dayone.nextElementSibling);
+
+console.log(" NODES: ",parent.childNodes); // very important  kyuki it is very much used in react 
+// it returns the node list of all the elements inside the parent div 
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Query Selector:
+// it is used to select the first element that matches the specified CSS selector(s) and returns it as an element object.
+// if there are multiple elements that match the selector, only the first one will be returned.
+
+// Query Selector All:
+// it is used to select all elements that match the specified CSS selector(s) and returns them as a static NodeList object.
+// if there are multiple elements that match the selector, all of them will be returned in the
+// NodeList, which can be iterated over using loops or other methods.
+// Node list do not contains the forEach method but we can convert it into an array and then we can use the forEach method on it.
+       //  Array.from(document.querySelectorAll('.day')).forEach((element)=>{
+       //     console.log(element.innerHTML);
+         //  })
+
+// HTML Collection:
+// it is a collection of HTML elements that are returned by certain DOM methods, such as getElementsByTagName, getElementsByClassName, and getElementsByName.
+// HTMLCollection is a live collection, which means that it automatically updates itself when the underlying document changes. For example, if you add a new element to the document that matches the criteria of the HTMLCollection, it will be automatically added to the collection. Similarly, if you remove an element from the document that is part of the HTMLCollection, it will be automatically removed from the collection as well. This makes HTMLCollection a useful tool for working with dynamic content in web pages. 
+
+// getElementsByClassName:
+// it is a method that returns a live HTMLCollection of all elements in the document with the specified class name. The method takes a single argument, which is the class name to search for. The returned HTMLCollection is live, meaning that it automatically updates itself when the underlying document changes. For example, if you add a new element to the document with the specified class name, it will be automatically added to the HTMLCollection. Similarly, if you remove an element from the document that has the specified class name, it will be automatically removed from the HTMLCollection as well. This makes getElementsByClassName a useful tool for working with dynamic content in web pages.
+// it also do not return an array but it returns an HTMLCollection which is an array like object and we can access the elements using index and also we can get the length of the collection using length property.
+// can be converted into an array using Array.from() method and then we can use the forEach method on it.
+//      Array.from(document.getElementsByClassName('day')).forEach((element)=>{
+//         console.log(element.innerHTML);  
+//      })
+
+// getElementsByTagName:
+// it is a method that returns a live HTMLCollection of all elements in the document with the specified tag name. The method takes a single argument, which is the tag name to search for. The returned HTMLCollection is live, meaning that it automatically updates itself when the underlying document changes. For example, if you add a new element to the document with the specified tag name, it will be automatically added to the HTMLCollection. Similarly, if you remove an element from the document that has the specified tag name, it will be automatically removed from the HTMLCollection as well. This makes getElementsByTagName a useful tool for working with dynamic content in web pages.
+// it also do not return an array but it returns an HTMLCollection which is an array like object and we can access the elements using index and also we can get the length of the collection using length property.
+// example: document.getElementsByTagName('div') will return a HTMLCollection of all div elements in the document.
+
+// getElementsByName:
+// it is a method that returns a live NodeList of all elements in the document with the specified name attribute. The method takes a single argument, which is the name attribute to search for. The returned NodeList is live, meaning that it automatically updates itself when the underlying document changes. For example, if you add a new element to the document with the specified name attribute, it will be automatically added to the NodeList. Similarly, if you remove an element from the document that has the specified name attribute, it will be automatically removed from the NodeList as well. This makes getElementsByName a useful tool for working with dynamic content in web pages.
+// it also do not return an array but it returns a NodeList which is an array like object and we can access the elements using index and also we can get the length of the collection using length property.
+// example: document.getElementsByName('username') will return a NodeList of all elements in the document with the name attribute 'username'.
+

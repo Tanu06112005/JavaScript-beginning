@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background:#313131;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    background:#fff;
+    height: auto;
+    width: 23%;
+    max-width: 23%;
+    padding:1rem;
+    align-items:center;
+    
+    border-radius: 0.7rem; 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+
+
+}
+.container p{
+    font-size: 1.3rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+}
+input{
+    height: 2.2rem;
+    width: 94%;
+    padding: 5px;
+}
+button{
+    /* position: absolute;
+    left:25%; */
+    height: 2rem;
+    width: 94%;
+    padding: 5px;
+    background-color: rgb(78, 166, 247);
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    
+}
+button:hover{
+    background-color:rgb(48, 146, 237) ;
+}
+.error{
+    animation: shake 0.1s linear 5;
+}
+ @keyframes shake{
+    0%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(-5px);
+    }
+    50%{
+        transform: translateX(0);
+    }
+    75%{
+        transform: translateX(5px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+ }
+

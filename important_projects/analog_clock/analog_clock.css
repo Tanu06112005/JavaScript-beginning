@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #212121;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+.container{
+    position: relative;
+    border-radius: 50%;
+    height:20.2rem ;
+    width: 20.2rem;
+    background-color: rgb(242, 242, 238);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 20px #241357, -5px -5px 20px #241357;
+
+}
+.clock{
+    color: white;
+    height: 20rem;
+    width: 20rem;
+    border-radius: 50%;
+    background-color: rgb(54, 56, 58);
+    display: flex;    /*for dot */
+    justify-content: center;
+    align-items: center;
+}
+.clock span{
+    position: absolute ;
+    transform: rotate(calc(30deg * var(--i)));
+    inset:12px;
+    text-align: center;
+}
+.clock span b{
+    transform: rotate(calc(-30deg * var(--i)));
+    display: inline-block;
+    font-size: 20px;
+}
+.clock::before{
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: white;
+}
+/* What ::before Does
+::before is a pseudo-element.
+It allows you to insert extra generated content just before the actual content of the element (.clock in this case).
+It doesn’t exist in the HTML — CSS creates it virtually.
+It requires the content property (here it’s '', meaning “an empty string” → no text, but still creates a box you can style). */
+
+.hand i{
+    position: absolute;
+    /* top: 28%; */
+    background-color: var(--clr);
+    width: 4px;
+    height: var(--height);
+    border-radius: 2px;
+}
+.hand{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+
+}
+
+

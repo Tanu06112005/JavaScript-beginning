@@ -1,0 +1,16 @@
+What all are related to the evenets?
+
+    1> Simple method for on click (within the tag)
+    2> using onclick in script tag after selecting the element on which evevnt is to be applied 
+
+3> eventListeners ---  addEventListener
+4> prevent default 
+5> propogation ---  stopPropogation(used for below topic) 
+6> event propogation types
+    i. event bubbling(like bubblr goes from bottom to top)
+            event bubbling me propogation goes ffrom children to thr parent 
+    ii. event capturing(capture krna fist bnd krna -> direction bahar se andar)
+            event captureing goes from parent to the children 
+
+    
+

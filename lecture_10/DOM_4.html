@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM lecture 4(edit and remove elements in DOM)</title>
+    <style>
+        body{
+            background-color: #212121;
+            color:aliceblue;
+        }
+    </style>
+
+</head>
+<body>
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+    
+
+
+    <script>
+
+        // add operation:
+
+        // in this function we tried to just add text directly into our created element
+        function addLanguage(langName){
+            const li=document.createElement('li');
+            li.innerText=`${langName}`;
+            document.querySelector('.language').appendChild(li);
+        }
+        addLanguage("python");
+        addLanguage("cpp"); 
+
+  
+        // in this function we are trying to create a textnode(considering it as a child to our created element), then appening it to ouer element and finally appending our element to the main body
+        function optimalAddLang(langName){
+            const li=document.createElement('li');
+            li.append(document.createTextNode(langName));
+            document.querySelector('.language').appendChild(li);
+        }
+        optimalAddLang("optimal-MongoDB");
+
+
+        //edit operaton:
+
+                // meth 1: the element that i want to edit usko phle select kro the set kr do inner html
+            const secondli=document.querySlector("li:nth-child(2)");
+            console.log(secondli);
+            secondli.innerHTML="Mojo";
+
+
+                // meth 2: ek aur element create kr lo and then usko replace kr do 
+            const newli=document.createElement('li');
+            newli.textContent="Java";
+            secondli=replaceWith(newli);
+
+
+            // Edit 
+            const firstli=document.querySelector("li:first-child");
+            firstli.outerHTML='<li>TypeScript</li>';
+
+            // delete:
+
+            const firstLang=document.querySelector("li:first-child");
+            firstLang.remove();
+
+
+    </script>
+</body>
+</html>

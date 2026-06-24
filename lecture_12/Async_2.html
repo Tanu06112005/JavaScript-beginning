@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+</head>
+<body>
+    <h1>Document 2 for Async</h1>
+    <button id="start">START</button>
+    <button id="stop">STOP</button>
+
+
+    <script>
+
+    //     const printDate=function(){
+    //         console.log(Date.now());
+    //     }
+    //  printDate();
+
+    //  const setInterval_ref=setInterval(printDate,1000);
+       
+    //  clearInterval(setInterval_ref);
+
+
+
+
+// ----------------------------practical------------------------------------
+     // My goal is to start printing the date as i press the satrt button and printing the date as i hit the sstop button
+
+
+     const printDate=function(){
+            console.log(Date.now());
+        }
+
+    // const setInterval_ref=setInterval(printDate,1000);
+       
+    //  clearInterval(setInterval_ref);
+
+
+
+    let setInterval_ref;
+     document.getElementById('start').addEventListener('click',function(){
+     setInterval_ref=setInterval(printDate,1000);
+
+     });
+
+
+      document.getElementById('stop').addEventListener('click',function(){
+        clearInterval(setInterval_ref);
+        console.log(" you clicked the stop button,Event stopped...!");
+     });
+
+     
+
+         
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="owl"  ></li>    
+            
+            <!--onclick="alert('owl, using onclick in the innerHTML')" -->
+            
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    //1.
+    //const owl =document.getElementById('owl').onclick=alert("owl is clicked")            // wrong 
+    
+
+    // 2.
+   //const owl= document.getElementById('owl').addEventListener('mouseover',function(){
+    //    alert("the picture of get hover")
+    //})          // correct
+    
+
+    // 3. 
+    // const owl=document.getElementById('owl').onclick=function(e){
+    //     console.log(e)
+    //     alert("owl is clicked")}  // right
+
+//------------------------------------------------------------------------------------------------------------------------------------
+    // 4.lets learn about event bubbling(child to parent{false}) and event capturing(parent to child{true})
+
+
+                        // event bubbling happens: when both have false: 
+
+    //   const images=document.getElementById('images').addEventListener('click',function(e){
+    //     console.log("clicked inside the ul(parent)")
+    //     alert("ul is clicked")},false)
+
+    //      const owl=document.getElementById('owl').addEventListener('click',function(e){
+    //     console.log("clicked the owl(targeted child)")
+    //     alert("owl clicked")},false)
+
+        
+                                // event bubbling happens: when parent is false anf the child is true : 
+
+        // const images=document.getElementById('images').addEventListener('click',function(e){
+        // console.log("clicked inside the ul(parent)")
+        // alert("ul is clicked")},false)
+
+        //  const owl=document.getElementById('owl').addEventListener('click',function(e){
+        // console.log("clicked the owl(targeted child)")
+        // alert("owl clicked")},true)
+
+
+        //                        // event capturing happens: when both are true: 
+
+        // const images=document.getElementById('images').addEventListener('click',function(e){
+        // console.log("clicked inside the ul(parent)")
+        // alert("ul is clicked")},true)
+
+        //  const owl=document.getElementById('owl').addEventListener('click',function(e){
+        // console.log("clicked the owl(targeted child)")
+        // alert("owl clicked")},true)
+
+
+                               // event capturing happens: when parent is true and the child is false : 
+
+        // const images=document.getElementById('images').addEventListener('click',function(e){
+        // console.log("clicked inside the ul(parent)")
+        // alert("ul is clicked")},true)
+
+        //  const owl=document.getElementById('owl').addEventListener('click',function(e){
+        // console.log("clicked the owl(targeted child)")
+        // alert("owl clicked")},false)
+
+//----------------------------------------------------------------------------------------------------------------
+// 5.
+        // the any time if yu want to stop the propogation 
+        // we use e,stopPropogation
+
+
+        // in case of event bubbling 
+        // const images=document.getElementById('images').addEventListener('click',function(e){
+        // console.log("clicked inside the ul(parent)")
+        // alert("ul is clicked")},false)
+
+        //  const owl=document.getElementById('owl').addEventListener('click',function(e){
+        // console.log("clicked the owl(targeted child)")
+        // alert("owl clicked")
+        // e.stopPropagation()},false)
+
+
+        // is case me ho to rha h event capturing means parent to child and propogation stops hoga after the child i.e owl ke execute hone ke baad 
+        // but parent that is image execue hone ke baad chils execute hoga therefore no changes can be seen here
+        // const images=document.getElementById('images').addEventListener('click',function(e){
+        // console.log("clicked inside the ul(parent)")
+        // alert("ul is clicked")},true)
+
+        //  const owl=document.getElementById('owl').addEventListener('click',function(e){
+        // console.log("clicked the owl(targeted child)")
+        // alert("owl clicked")
+        // e.stopPropagation()},false)
+
+
+
+        // upr wale case ka vice versa 
+        // parent to phle execute krwa rhe h + parent me hi propogation stop krwa rhe h 
+    //     const images=document.getElementById('images').addEventListener('click',function(e){
+    //     console.log("clicked inside the ul(parent)")
+    //     alert("ul is clicked")
+    //  e.stopPropagation()},true)
+
+    //      const owl=document.getElementById('owl').addEventListener('click',function(e){
+    //     console.log("clicked the owl(targeted child)")
+    //     alert("owl clicked")
+    //    },true)
+
+
+//--------------------------------------------------------------------------------------------------------------
+// 6.                   using e.preventDefault()::
+// Normally, a form refreshes the page when submitted.
+// 👉 e.preventDefault() stops that default behavior.
+// Clicking a link normally opens another page.
+// 👉 preventDefault() stops it.
+
+//  const images=document.getElementById('images').addEventListener('click',function(e){
+//         console.log("clicked inside the ul(parent)")
+//         },false)
+
+//          const owl=document.getElementById('owl').addEventListener('click',function(e){
+//         console.log("clicked the owl(targeted child)")
+//        },false)
+
+//         const google=document.getElementById('google').addEventListener('click',function(e){
+//         console.log("clicked the google link(targeted child)")
+//         e.preventDefault()
+//         e.stopPropagation()
+//        },false)
+
+//---------------------------------------------------------------------------------------------------------------------------
+// 7.
+
+// using targets in the event listner: in the case when we selected the parent and want to perform the operations 
+// acc to the event to the particular children the we make use of the targets 
+
+
+// const child=document.querySelector("#images").addEventListener('click',function(e){
+//     console.log(e.target)
+// })
+
+// const childd=document.querySelector("#images").addEventListener('click',function(e){
+//     console.log(e)  // provides the pointer event 
+// })
+
+// const child1=document.querySelector('#images').addEventListener('click',function(e){
+//     console.log(e.target)    // provides targeted image  
+// })
+
+
+// const child1=document.querySelector('#images').addEventListener('click',function(e){
+//     console.log(e.target.parentNode) // provides the parent of the targeted image i.e. li 
+// })
+
+// deleting the image when clicked 
+//  const dlt=document.querySelector('#images').addEventListener('click',function(e){
+//     console.log(e.target.parentNode);
+//     console.log(e.target)
+//     const selectedItem=e.target;
+//     selectedItem.remove();
+//     console.log()          // yaha se remove tho hua li ke andar ki image 
+//     console.log(e.target.parentNode);       // therefore li abhi delete nhi hua h : and points to the null value
+
+//     if(e.target.id==='google'){
+//         e.preventDefault();
+//     }
+//  })
+
+// const dlt=document.querySelector('#images').addEventListener('click',function(e){
+//     console.log(e.target.parentNode);
+//     console.log(e.target)
+//     const selectedItem=e.target.parentNode;
+//     selectedItem.remove();
+//     console.log()          // yaha se remove tho hua li ke andar ki image 
+//     console.log(e.target.parentNode);       // therefore li abhi delete nhi hua h : and points to the null value
+
+//     if(e.target.id==='google'){
+//         e.preventDefault();
+//     }
+//  })
+
+ // ab is question me ek fault h ki : jaha pe bhi hm click kr rhe h uske parent elelment delete ho rha h 
+ // but we only want ki image ko click kre and then then li ko delete  kr de 
+ // so set the condition 
+
+ const specific= document.querySelector('#images').addEventListener('click',function(e){
+    if(e.target.tagName==='IMG'){
+        console.log(e.target.parentNode)
+        let removeIt=e.target.parentNode
+        removeIt.remove();
+        
+    }
+    if(e.target.id==='google'){
+         e.preventDefault();
+        }
+    
+
+ })
+
+
+
+
+
+
+
+    
+</script>
+</html>

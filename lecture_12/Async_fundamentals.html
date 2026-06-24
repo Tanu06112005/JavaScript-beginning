@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+</head>
+<body>
+    <h1>Learning Async</h1>
+    <button id="button">STOP</button>
+
+
+    <script>
+
+        // it shows result after the alloted time interval to this function(executes only once)
+        
+        // method 1: passing the call back function 
+        setTimeout(function(){
+            console.log("tanushika")
+        },2000);
+
+        // method 2: passing the refrence of the function
+
+        const sayName=function(){
+            console.log("saying name");
+        }
+        setTimeout(sayName,4000);
+
+        //------------------------question -------------------
+        // now i wqant to change the text of my h1 after some time 
+
+        // const changeText=function(){
+        //     document.querySelector("h1").innerHTML="it is me after 6 seconds";
+        // }
+        // setTimeout(changeText,9000);
+
+
+        // now i want ki text change hone se phle hi i stop it from executing  when i click on th stop button
+        // for that we use    ------------ clearTimeout();--------------
+
+
+         const changeText=function(){
+            document.querySelector("h1").innerHTML="it is me after 6 seconds";
+        }
+        const setTimeout_ref=setTimeout(changeText,9000);
+
+        document.getElementById("button").addEventListener("click",function(){
+            clearTimeout(setTimeout_ref);      // need to provide the refrence of which setTimeout to be stopped 
+            console.log("changes stopped");
+        })
+
+         
+
+    </script>
+</body>
+</html>

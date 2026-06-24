@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="owl"  ></li>    
+            
+            <!--onclick="alert('owl, using onclick in the innerHTML')" -->
+            
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+
+    // const owl=document.getElementById('owl').onclick=function(){
+    //     alert("It is the outcome of the approach, using onclik in the script tag");
+    // }     
+    // it is not an effecient method as it do not provides us with the effecient/ complete functionality 
+    // only works for the click event not with any other event  
+
+
+
+//-------------------------------------------------------------------------------------------
+
+    //event propogation: as the name suggests it controls the execution on the events of the element 
+    // are of two types :
+          //  (i)--> event bubbling : executes the evevnts from inside to outside(child to parent )(false)
+        //  (i)--> event capturing  : executes the evevnts from outside to inside(parednt to child )(true)
+
+//-------------------------------------------------------------------------------------------
+
+// addEventListner takes three arguments {1. what event is captured    2. what function to perform  
+//                                         3.true/ false }
+
+    // document.getElementById('images').addEventListener('click',function(e){
+    //     console.log('images are clicked');
+    //     alert("image clicked")
+    //     },false);
+
+    // document.getElementById('owl').addEventListener('click',function(e){
+    // console.log('owl clicked')},false);
+
+
+// document.getElementById('images').addEventListener('click',function(e){
+//     console.log('images are clicked')},true);
+
+//     document.getElementById('owl').addEventListener('click',function(e){
+//     console.log('owl clicked')},true);
+
+
+
+    // if anytime we want to stop the event propogation we can use stopPropogation
+
+//     document.getElementById('owl').addEventListener('click',function(e){
+//     console.log('owl clicked');
+//     e.stopPropagation();
+// },false);
+
+
+
+// document.getElementById('google').addEventListener('click',function(e){
+//     e.preventDefault();   
+//     // after mentioning this it will nit direct to the google page and stay at the same page as it was 
+//     // in short the next action of the function of the element (here directiong to the google site is restricted)
+// },false);
+
+document.getElementById('google').addEventListener('click',function(e){
+    e.preventDefault();   
+    // after mentioning this it will not direct to the google page and stay at the same page as it was 
+    // in short the next action of the function of the element (here directiong to the google site is restricted)
+    e.stopPropagation();
+        console.log("google clicked");
+
+},false);
+
+
+// types, timestamp,defaultPrevented ,target,toElement, srcElement,currentTarget,clientX,clientY,screenX,screenY
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------------------------------
+document.querySelector('#images').addEventListener(
+'click',function(e){
+    console.log(e.target);
+    console.log(e.target.parentNode);
+        console.log(e.target.id);
+            console.log(e.target.tagName);
+
+            // const removeIt=e.target.parentNode;
+            // removeIt.remove();
+
+
+            if(e.target.tagName==='IMG'){
+                 let removeIt = e.target.parentNode;
+            removeIt.remove();
+            }
+
+}
+)
+
+
+</script>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Learning Async</h1>
+    <button id="start">START</button><br>
+    <button id="stop">STOP</button>
+
+
+    <script>
+        // ye call back function(function reference) ya fir function without name leta h ya jise handler bhu bolte h 
+        
+        // 1.)
+        // setTimeout(function(){
+        //     console.log("tanushika is trying the set timeout function");
+        // }, 2000)
+
+
+        // 2.)
+        // const printName=function(){
+        //     console.log("saying name");
+        // }
+        // setTimeout(printName,4000);
+
+
+        // 3.)
+        // ab setTime out ale action ko stop ya clear bhi kiya jana chahiye uske liye 
+        // clearTimeout() method ko use krte h 
+        //    but use liye hme reference dena pdta h ki konsa wala setTimeout stop krna h
+
+        // const changeText=function(){
+        //     document.querySelector("h1").innerHTML="it is me after 6 seconds";
+        // }
+        // const setTimeout_ref=setTimeout(changeText,3000);
+
+        // clearTimeout(setTimeout_ref); // 3 second hone se phle hi ye clearTimeout function setTimeout ko cancel kr rha h 
+
+
+  // 4.) now i want ki kisi event ke liye m ek setTimeout function lagaun:-
+        // i want ki start buttom pe click kru and table trint hona start ho jaye aur jaisehi koi condition met ho jaye clear time out ho jaye 
+
+
+        //---------------------------Tried myself but its wrong----------------------
+// document.getElementById("start").addEventListener("click",function(){
+//     let i=1;
+//     while(i<11){
+//         const ref=setTimeout(function(){
+//             console.log(`2*${i}=${2*i}`);},2000)
+//             i++;
+//     }
+    
+//     if(i>5){
+//         clearTimeout(ref);
+//     }
+    
+// })
+//----------------------------------------------------------------------------
+// correct version:-
+
+
+
+// // document.getElementById("start").addEventListener("click", function () {   // step 1 -> event call hoga 
+
+//     let i = 1;  // step 2-> variable declare hoga   // step 5-> function execute hoga 
+
+//     function printTable() {  // step 3-> function declare hoga but abhi tk call nhi hu ah isliye execute nhi hoga 
+
+//         console.log(`2 * ${i} = ${2 * i}`);
+
+//         if (i >= 5) {
+//             console.log("condition met, stopping the table");
+//             return
+
+//                     // OR
+
+//         // clearTimeout(id); // stop recursion    // nhi ye statement use nhi kr skte h kyuki variable id ko hm use nhi kr skte uski declaration se phle (error)
+//         }
+
+//         i++;
+
+//         const id=setTimeout(printTable, 2000); // it is responsible for recursion (multiple iterations after incrementing the i value)
+//     }
+
+//     setTimeout(printTable, 2000);   // step 4-> function call hoga and 2 second ke baad printTable function execute hoga and table print hoga aur phir se printTable function call hoga aur ye process tab tak chalta rahega jab tk condition met nhi ho jati
+
+// });
+
+
+
+
+// 5.)
+// now i want ki start buttom press krake setTime out start kru and stop button press krke clear kr du settimeout ko
+function printName(){
+    console.log("tanushika is trying the set timeout function");
+}
+document.getElementById("start").addEventListener("click",function(){
+    const id=setTimeout(printName,2000);
+    document.getElementById("stop").addEventListener("click",function(){
+        clearTimeout(id);
+        console.log("set timeout stopped");
+    })
+})
+
+
+    </script>
+    
+</body>
+</html>
